@@ -9,12 +9,12 @@ app.secret_key = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///evoting.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Email Configuration for Flask-Mail (USE App Password here)
+# Email Configuration for Flask-Mail 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'dmtoravi@gmail.com'
-app.config['MAIL_PASSWORD'] = 'naexdkaqfqnukxqh'  # App password, not Gmail password
+app.config['MAIL_PASSWORD'] = 'naexdkaqfqnukxqh'  
 
 mail = Mail(app)
 db = SQLAlchemy(app)
@@ -41,7 +41,7 @@ def loading():
 
 @app.route('/home')
 def home():
-    return render_template('home.html')  # Make sure this file exists
+    return render_template('home.html') 
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
@@ -124,7 +124,7 @@ def vote():
     voter = Voter.query.filter_by(voter_id=session.get('voter_id')).first()
 
     if voter.has_voted:
-        return render_template('already_voted.html')  # 👈 show proper message and redirect
+        return render_template('already_voted.html')  
 
     candidates = Candidate.query.all()
 
@@ -134,7 +134,7 @@ def vote():
         candidate.votes += 1
         voter.has_voted = True
         db.session.commit()
-        return render_template('thankyou.html')  # 👈 thank you + redirect
+        return render_template('thankyou.html')  
 
     return render_template('vote.html', candidates=candidates)
 
@@ -144,16 +144,7 @@ def results():
     candidates = Candidate.query.all()
     return render_template('result.html', candidates=candidates)
 
-# @app.route('/clear_votes', methods=['POST'])
-# def clear_votes():
-#     conn = sqlite3.connect('e_voting.db')
-#     cursor = conn.cursor()
-#     cursor.execute("DELETE FROM votes")
-#     cursor.execute("UPDATE voters SET has_voted = 0")
-#     conn.commit()
-#     conn.close()
-#     flash("All votes cleared successfully.")
-#     return redirect(url_for('admin_dashboard'))
+
 
 
 @app.route('/logout')
