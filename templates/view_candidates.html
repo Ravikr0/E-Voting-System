@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('/static/img/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            color: #000;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #000;
+        }
+
+        .candidate-option {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .candidate-option:hover {
+            background-color: rgba(0, 123, 255, 0.2);
+        }
+
+        .candidate-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+        }
+
+        .candidate-option img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            /* border-radius: 50%; */
+            margin-right: 15px;
+            border: 2px solid #fff;
+        }
+
+        .candidate-info {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .candidate-option {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .candidate-option img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Candidate List</h2>
+        <form method="post" action="/vote"> <!-- optional action -->
+            {% for candidate in candidates %}
+                <label class="candidate-option">
+                    <img src="{{ url_for('static', filename=candidate.image.split('static/')[-1]) }}"
+                         alt="{{ candidate.name }}">
+                    <div class="candidate-info">{{ candidate.name }} </div>
+                </label>
+            {% endfor %}
+        </form>
+
+        <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

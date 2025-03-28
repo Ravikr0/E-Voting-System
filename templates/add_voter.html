@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Voter</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navbar Styling */
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+            opacity: 0.9;
+        }
+
+        /* Body Styling */
+        body {
+            background: url("/static/img/background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        /* Title */
+        h2 {
+            font-size: 48px;
+            color: #003366;
+            margin-bottom: 30px;
+        }
+
+        /* Centered Form Card */
+        form {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+            text-align: left;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #003f7f;
+        }
+
+        /* Dashboard Button */
+        .dash {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .dash:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            form {
+                padding: 25px;
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <a class="navbar-brand" href="/">
+            <img src="/static/img/logo.png" alt="NISCHAY Logo">
+        </a>
+    </nav>
+
+    <!-- Page Title -->
+    <h2>Add Voter</h2>
+
+    <!-- Form -->
+    <form method="POST">
+        <label for="voter_id">Voter ID:</label>
+        <input type="text" name="voter_id" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <input type="submit" value="Add Voter">
+    </form>
+
+    <!-- Dashboard Button -->
+    <div>
+        <a href="{{ url_for('admin_dashboard') }}" class="dash">Go to Dashboard</a>
+    </div>
+</body>
+
+</html>

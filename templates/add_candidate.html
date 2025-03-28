@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Candidate</title>
+    <style>
+        /* Your existing styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar-brand img {
+            height: 65px;
+            width: auto;
+            padding: 8px;
+        }
+        body {
+            padding-top: 100px;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url("/static/img/background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+        }
+        h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        form {
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        label {
+            font-weight: 600;
+            font-size: 16px;
+            margin: 15px 0 5px;
+            display: block;
+            color: #f1f1f1;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 14px;
+        }
+        button[type="submit"] { /* Styling for button tag instead of input[type="submit"] */
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #002c5f;
+        }
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .button-containera {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <img src="/static/img/logo.png" alt="NISCHAY Logo" style="background-color:transparent;">
+            </a>
+        </div>
+    </nav>
+
+    <h2>Add Candidate</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Candidate Name:</label>
+        <input type="text" name="name" required><br>
+    
+        <label>Party Name:</label>
+        <input type="text" name="party" required><br>
+    
+        <label>Candidate Image:</label>
+        <input type="file" name="image" required><br>
+    
+        <label>Party Logo:</label>
+        <input type="file" name="logo" required><br>
+    
+        <button type="submit">Add Candidate</button> <!-- Changed to button tag with styling -->
+    </form>
+
+    <div class="button-container">
+        <a href="{{ url_for('admin_dashboard') }}" class="button-containera">Go to Dashboard</a>
+    </div>
+</body>
+
+</html>

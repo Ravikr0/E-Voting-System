@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - E-Voting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Navbar styling */
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        body {
+            margin: 0;
+            padding-top: 80px;
+            background: url("/static/img/background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            text-align: center;
+            background-color: #000;
+            backdrop-filter: blur(8px);
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            max-width: 900px;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .dashboard-data {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Common styles for all buttons */
+        .dashboard-data a {
+            flex: 1 1 40%;
+            min-width: 180px;
+            padding: 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .dashboard-data a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Individual color styles */
+        .add-candidate {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        }
+
+        .add-candidate:hover {
+            background: linear-gradient(135deg, #ff6a5b, #e040fb);
+        }
+
+        .add-voter {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        }
+
+        .add-voter:hover {
+            background: linear-gradient(135deg, #ff6a5b, #e040fb);
+        }
+
+        .view-candidates {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        }
+
+        .view-candidates:hover {
+            background: linear-gradient(135deg, #ff6a5b, #e040fb);
+        }
+
+        .view-results {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        }
+
+        .view-results:hover {
+            background: linear-gradient(135deg, #ff6a5b, #e040fb);
+        }
+
+        .logout {
+            background: linear-gradient(135deg, #a71d2a, #dc3545);
+        }
+
+        .logout:hover {
+            background: linear-gradient(135deg, #dc3545, #ff6b6b);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <img src="/static/img/logo.png" alt="NISCHAY Logo">
+            </a>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h2>Welcome, Admin</h2>
+        <nav class="dashboard-data">
+            <a href="{{ url_for('add_candidate') }}" class="add-candidate">Add Candidate</a>
+            <a href="{{ url_for('add_voter') }}" class="add-voter">Add Voter</a>
+            <a href="{{ url_for('view_candidates') }}" class="view-candidates">View Candidate List</a>
+            <a href="{{ url_for('results') }}" class="view-results">View Results</a>
+            <a href="{{ url_for('logout') }}" class="logout" style="padding: 20px;">Logout</a>
+        </nav>
+    </div>
+</body>
+
+</html>

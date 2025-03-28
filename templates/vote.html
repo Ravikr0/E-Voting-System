@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Navbar styling */
+    .navbar-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 20px;
+      z-index: 999;
+    }
+
+    .navbar-brand img {
+      height: 45px;
+      width: auto;
+      padding: 5px;
+    }
+
+    /* Page body */
+    body {
+      margin: 0;
+      padding-top: 90px;
+      background: url("/static/img/background.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .candidate-option {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 15px 20px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .candidate-option img {
+      height: 80px;
+      width: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #007bff;
+      transition: 0.3s;
+    }
+
+    .candidate-option input[type="radio"] {
+      display: none;
+    }
+
+    .candidate-info {
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .candidate-option.selected {
+      background-color: #c8f7c5;
+      border-color: #28a745;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .navbar-custom {
+        justify-content: center;
+      }
+
+      .candidate-option {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar-custom">
+    <a class="navbar-brand" href="/">
+      <img src="/static/img/logo.png" alt="Logo" />
+    </a>
+  </nav>
+
+  <!-- Vote Form -->
+  <div class="container">
+    <h2>Cast Your Vote</h2>
+    <form method="POST" id="voteForm">
+      {% for candidate in candidates %}
+      <label class="candidate-option">
+        <input type="radio" name="candidate" value="{{ candidate.id }}" required />
+        <img src="{{ url_for('static', filename=candidate.image.split('static/')[-1]) }}"
+          alt="{{ candidate.name }}" />
+        <div class="candidate-info">{{ candidate.name }}</div>
+      </label>
+      {% endfor %}
+      <button type="submit">Vote</button>
+    </form>
+  </div>
+
+  <script>
+    const options = document.querySelectorAll('.candidate-option');
+
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        // Remove 'selected' class from all
+        options.forEach(opt => opt.classList.remove('selected'));
+        // Add to current
+        option.classList.add('selected');
+        // Check the radio input
+        option.querySelector('input[type="radio"]').checked = true;
+      });
+    });
+  </script>
+</body>
+
+</html>

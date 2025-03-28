@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voting Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+            min-height: 100vh;
+        }
+        .results-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 500px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 30px;
+        }
+        .candidate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+        .candidate img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+        }
+        .votes {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-box">
+        <h2>Voting Results</h2>
+        {% for candidate in candidates %}
+        <div class="candidate">
+            <div class="info">
+                <img src="{{ url_for('static', filename=candidate.image.split('static/')[-1]) }}" alt="{{ candidate.name }}">
+                <span>{{ candidate.name }}</span>
+            </div>
+            <div class="votes">{{ candidate.votes }} vote{{ 's' if candidate.votes != 1 else '' }}</div>
+        </div>
+        
+        <!-- existing candidate result display ends here -->
+
+        {% else %}
+        <p>No candidates available.</p>
+        {% endfor %}
+
+        <!-- Dashboard Button -->
+        <div style="margin-top: 30px; text-align: center;">
+        <a href="{{ url_for('admin_dashboard') }}" 
+           style="padding: 10px 20px; background-color: #007bff; color: white; 
+                  text-decoration: none; border-radius: 8px; font-weight: bold;">
+            Go to Dashboard
+        </a>
+        </div>
+
+    </div>
+</body>
+</html>

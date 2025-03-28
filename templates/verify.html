@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP - NISCHAY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset & Global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("/static/img/background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            color: #fff;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+        }
+
+        /* OTP Box */
+        .otp-container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .otp-container h2 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .otp-container p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .otp-container input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        .otp-container input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .otp-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0056b3, #007bff);
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .otp-submit:hover {
+            background: linear-gradient(135deg, #007bff, #00cfff);
+            transform: scale(1.03);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 480px) {
+            .otp-container {
+                padding: 30px 20px;
+            }
+
+            .navbar-custom {
+                padding: 12px 20px;
+            }
+
+            .navbar-brand img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <a class="navbar-brand" href="/">
+            <img src="/static/img/logo.png" alt="NISCHAY Logo">
+        </a>
+    </nav>
+
+    <!-- OTP Box -->
+    <div class="otp-container">
+        <h2>Enter OTP</h2>
+        <p>We've sent a one-time password to your registered email.</p>
+        <form method="POST">
+            <input type="text" name="otp" placeholder="Enter OTP" required>
+            <input type="submit" value="Verify" class="otp-submit">
+        </form>
+    </div>
+
+</body>
+
+</html>

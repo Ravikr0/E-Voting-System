@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submitting Vote...</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px 30px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .vote-box {
+      position: relative;
+      width: 150px;
+      height: 100px;
+      margin: 0 auto 30px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .box-inner {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .slot {
+      position: absolute;
+      top: 38px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 10px;
+      background: #111;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
+    .vote {
+      width: 60px;
+      height: 40px;
+      background: #ff3b3b;
+      border-radius: 6px;
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: drop-in 2s infinite;
+      box-shadow: 0 4px 10px rgba(255, 59, 59, 0.4);
+      z-index: 1;
+    }
+
+    @keyframes drop-in {
+      0% { top: -60px; opacity: 0; }
+      40% { top: 20px; opacity: 1; }
+      60% { top: 36px; opacity: 1; }
+      70% { top: 40px; opacity: 0.4; }
+      80% { top: 45px; opacity: 0; }
+      100% { top: 45px; opacity: 0; }
+    }
+
+    .text {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .dots::after {
+      content: '';
+      display: inline-block;
+      animation: dots 1.2s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+      0% { content: ''; }
+      33% { content: '.'; }
+      66% { content: '..'; }
+      100% { content: '...'; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="vote-box">
+      <div class="slot"></div>
+      <div class="box-inner">
+        <div class="vote"></div>
+      </div>
+    </div>
+    <div class="text">New-Vote, New-Voice<span class="dots"></span></div>
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "/home";
+    }, 2000); // redirect after 2 seconds
+  </script>
+</body>
+</html>
