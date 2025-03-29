@@ -71,7 +71,14 @@
       cursor: pointer;
     }
 
-    .candidate-option img {
+    .party-logo{
+      height: 80px;
+      width: 80px;
+      padding-left: 150px;
+      object-fit: cover;
+    }
+
+    .candidate-option-img {
       height: 80px;
       width: 80px;
       object-fit: cover;
@@ -79,6 +86,7 @@
       border: 2px solid #007bff;
       transition: 0.3s;
     }
+    
 
     .candidate-option input[type="radio"] {
       display: none;
@@ -146,7 +154,7 @@
       <label class="candidate-option">
         <input type="radio" name="candidate" value="{{ candidate.id }}" required />
         <img src="{{ url_for('static', filename=candidate.image.split('static/')[-1]) }}"
-          alt="{{ candidate.name }}" />
+          alt="{{ candidate.name }}" class="candidate-option-img" />
         <div class="candidate-info">{{ candidate.name }}</div>
       </label>
       {% endfor %}

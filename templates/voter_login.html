@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Voter Login - NISCHAY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <style>
-        /* Reset default margins */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body Styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: url("/static/img/background.jpg") no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             color: #fff;
-            padding-top: 100px;
+            padding-top: 120px;
         }
 
-        /* Navbar */
         .navbar-custom {
             position: fixed;
             top: 0;
@@ -32,46 +31,45 @@
             z-index: 999;
             display: flex;
             align-items: center;
-            padding: 10px 30px;
+            padding: 15px 40px;
         }
 
         .navbar-brand img {
-            height: 50px;
+            height: 70px;
         }
 
-        /* Login Container */
         .login-container {
             background-color: rgba(255, 255, 255, 0.95);
-            max-width: 400px;
+            max-width: 450px;
             margin: auto;
-            padding: 30px 40px;
+            padding: 40px 50px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             color: #333;
         }
 
         .login-container h2 {
-            margin-bottom: 25px;
-            font-size: 26px;
+            margin-bottom: 30px;
+            font-size: 32px;
             color: #007bff;
         }
 
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: left;
         }
 
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 17px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px 12px;
-            font-size: 15px;
+            padding: 14px 16px;
+            font-size: 17px;
             border: 1px solid #ccc;
             border-radius: 6px;
             transition: border-color 0.3s ease;
@@ -84,8 +82,8 @@
 
         input[type="submit"] {
             width: 100%;
-            padding: 12px;
-            font-size: 16px;
+            padding: 14px;
+            font-size: 18px;
             border: none;
             border-radius: 6px;
             background-color: #007bff;
@@ -99,7 +97,13 @@
             background-color: #0056b3;
         }
 
-        /* Flash message styling */
+        canvas#captchaCanvas {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
         ul {
             list-style-type: none;
             margin-top: 20px;
@@ -115,11 +119,15 @@
         @media (max-width: 500px) {
             .login-container {
                 margin: 20px;
-                padding: 25px;
+                padding: 30px;
             }
 
             .navbar-custom {
-                padding: 8px 20px;
+                padding: 10px 20px;
+            }
+
+            .navbar-brand img {
+                height: 60px;
             }
         }
     </style>
@@ -150,7 +158,7 @@
 
         <div class="input-group">
             <label for="captcha">Enter CAPTCHA:</label>
-            <canvas id="captchaCanvas" width="200" height="50" style="border:1px solid #ccc; border-radius:6px; display:block; margin-bottom:10px;"></canvas>
+            <canvas id="captchaCanvas" width="250" height="60"></canvas>
             <input type="text" id="captchaInput" placeholder="Enter the text above" required>
         </div>
 
@@ -168,7 +176,7 @@
     {% endwith %}
 </div>
 
-<!-- CAPTCHA SCRIPT -->
+<!-- CAPTCHA Script -->
 <script>
     let generatedCaptcha = "";
 
@@ -176,25 +184,21 @@
         const canvas = document.getElementById("captchaCanvas");
         const ctx = canvas.getContext("2d");
 
-        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Background
         ctx.fillStyle = "#f0f0f0";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Generate random characters
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         generatedCaptcha = "";
         for (let i = 0; i < 6; i++) {
             generatedCaptcha += chars.charAt(Math.floor(Math.random() * chars.length));
         }
 
-        // Draw characters with distortion
-        ctx.font = "25px Arial";
+        ctx.font = "28px Arial";
         for (let i = 0; i < generatedCaptcha.length; i++) {
-            const x = 30 * i + 10;
-            const y = 35;
+            const x = 35 * i + 10;
+            const y = 40;
             const angle = Math.random() * 0.5 - 0.25;
             ctx.save();
             ctx.translate(x, y);
@@ -204,7 +208,6 @@
             ctx.restore();
         }
 
-        // Add random lines
         for (let i = 0; i < 6; i++) {
             ctx.beginPath();
             ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);

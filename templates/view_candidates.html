@@ -106,7 +106,7 @@
 
     <div class="card">
         <h2>Candidate List</h2>
-        <form method="post" action="/vote"> <!-- optional action -->
+        <form method="post" action="/vote"> 
             {% for candidate in candidates %}
                 <label class="candidate-option">
                     <img src="{{ url_for('static', filename=candidate.image.split('static/')[-1]) }}"
