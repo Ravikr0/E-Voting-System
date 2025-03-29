@@ -30,7 +30,6 @@
         /* Page body */
         body {
             margin: 0;
-            height: 700px;
             padding-top: 80px;
             background: url("/static/img/background.jpg") no-repeat center center fixed;
             background-size: cover;
@@ -39,7 +38,7 @@
             text-align: center;
             background-color: #000;
             backdrop-filter: blur(8px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1)
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         h1 {
@@ -84,19 +83,6 @@
             background-color: #0a58ca;
         }
 
-        /* Responsive text */
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2rem;
-                margin-top: 70px;
-            }
-
-            .action-buttons a {
-                width: 80%;
-                font-size: 1rem;
-            }
-        }
-
         .ads-container {
             width: 100%;
             overflow: hidden;
@@ -131,9 +117,70 @@
             }
         }
 
-        /* Duplicate content for infinite effect */
         .ads-slider > * {
             flex-shrink: 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+                margin-top: 70px;
+                padding: 0 15px;
+            }
+
+            .ads-slider img {
+                height: 180px;
+                margin: 0 15px;
+            }
+
+            .action-buttons a {
+                font-size: 1rem;
+                padding: 10px 25px;
+            }
+
+            .navbar-brand img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 70px;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-top: 50px;
+                padding: 0 10px;
+            }
+
+            .ads-slider img {
+                height: 150px;
+                margin: 0 10px;
+            }
+
+            .action-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .action-buttons a {
+                width: 100%;
+                max-width: 300px;
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .admin-btn {
+                padding: 6px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -150,10 +197,10 @@
         </div>
     </div>
 </nav>
+
 <!-- Infinite Scrolling Banner -->
 <div class="ads-container">
     <div class="ads-slider">
-        <!-- Repeat images here for infinite effect -->
         <img src="/static/img/ad3.jpg" alt="Ad 1">
         <img src="/static/img/ad2.png" alt="Ad 2">
         <img src="/static/img/ad2.jpg" alt="Ad 3">
@@ -164,6 +211,7 @@
         <img src="/static/img/ad4.jpg" alt="Ad 4 Duplicate">
     </div>
 </div>
+
 <!-- Main Content -->
 <main>
     <h1>Welcome to <span>NISCHAY</span> E-Voting System</h1>
