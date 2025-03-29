@@ -3,30 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>NISCHAY E-Voting</title>
-    
+
+    <!-- Mobile Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        .navbar-custom {
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-    
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-        }
-    
-        .admin-btn {
-            border-radius: 25px;
-            background-color: #0a58ca;
-            padding: 10px 30px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-    
         body {
             margin: 0;
             padding-top: 80px;
@@ -36,47 +20,67 @@
             color: #fff;
             text-align: center;
             background-color: #000;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
             overflow-x: hidden;
-            overflow-y: hidden;
         }
-    
+
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand img {
+            height: 65px;
+            width: auto;
+        }
+
+        .admin-btn {
+            border-radius: 25px;
+            background-color: #0a58ca;
+            padding: 12px 26px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
         h1 {
-            font-size: 3.2rem;
-            margin-top: 90px;
+            font-size: 2.4rem;
+            margin-top: 40px;
+            padding: 0 15px;
             color: #000;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            font-weight: bold;
         }
-    
+
         span {
             color: #0a58ca;
         }
-    
+
         .action-buttons {
-            margin-top: 50px;
+            margin-top: 30px;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 20px;
+            padding: 0 20px;
         }
-    
+
         .action-buttons a {
-            padding: 18px 40px;
-            font-size: 1.4rem;
-            border-radius: 35px;
+            padding: 16px 30px;
+            font-size: 1.3rem;
+            border-radius: 30px;
             font-weight: 600;
-            transition: 0.3s;
         }
-    
+
         .btn-voter {
             background-color: #198754;
             color: white;
         }
-    
+
         .btn-voter:hover {
-            background-color: #146c43;
+            background-color: #157347;
         }
-    
+
+        /* Scrolling Ads Styles */
         .ads-container {
             width: 100%;
             overflow: hidden;
@@ -110,73 +114,24 @@
                 transform: translateX(-50%);
             }
         }
-    
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.4rem;
-                margin-top: 70px;
-                padding: 0 15px;
-            }
-    
-            .ads-slider img {
-                height: 230px;
-                margin: 0 20px;
-            }
-    
-            .action-buttons a {
-                font-size: 1.2rem;
-                padding: 15px 35px;
-            }
-    
+
+        @media (min-width: 576px) {
             .navbar-brand img {
-                height: 40px;
+                height: 70px;
             }
-        }
-    
-        @media (max-width: 576px) {
-            body {
-                padding-top: 70px;
-                background-size: cover;
-            }
-    
-            h1 {
-                font-size: 2rem;
-                margin-top: 50px;
-                padding: 0 10px;
-            }
-    
-            .ads-slider img {
-                height: 200px;
-                margin: 0 15px;
-            }
-    
-            .action-buttons {
-                flex-direction: column;
-                align-items: center;
-                padding: 0 15px;
-            }
-    
+
             .action-buttons a {
-                width: 100%;
-                max-width: 320px;
-                font-size: 1.2rem;
-                padding: 14px 30px;
-            }
-    
-            .admin-btn {
-                padding: 8px 25px;
-                font-size: 1rem;
+                font-size: 1.3rem;
+                padding: 16px 40px;
             }
         }
     </style>
-    
-    
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-3">
         <a class="navbar-brand" href="/">
             <img src="/static/img/logo.png" alt="NISCHAY Logo">
         </a>
@@ -186,31 +141,33 @@
     </div>
 </nav>
 
-<!-- Infinite Scrolling Banner -->
+<!-- Scrolling Ads Section BELOW the content -->
 <div class="ads-container">
     <div class="ads-slider">
         <img src="/static/img/ad3.jpg" alt="Ad 1">
         <img src="/static/img/ad2.png" alt="Ad 2">
         <img src="/static/img/ad2.jpg" alt="Ad 3">
         <img src="/static/img/ad4.jpg" alt="Ad 4">
-        <img src="/static/img/ad3.jpg" alt="Ad 1 Duplicate">
-        <img src="/static/img/ad2.png" alt="Ad 2 Duplicate">
-        <img src="/static/img/ad2.jpg" alt="Ad 3 Duplicate">
-        <img src="/static/img/ad4.jpg" alt="Ad 4 Duplicate">
+        <img src="/static/img/ad3.jpg" alt="Ad 1">
+        <img src="/static/img/ad2.png" alt="Ad 2">
+        <img src="/static/img/ad2.jpg" alt="Ad 3">
+        <img src="/static/img/ad4.jpg" alt="Ad 4">
     </div>
 </div>
 
 <!-- Main Content -->
 <main>
-    <h1>Welcome to <span>NISCHAY</span> E-Voting System</h1>
+    <h1>Welcome to <span>NISCHAY</span> E-Voting</h1>
 
     <div class="action-buttons">
         <a href="{{ url_for('voter_login') }}" class="btn btn-voter">Voter Login</a>
-        <!-- <a href="{{ url_for('admin_login') }}" class="btn btn-admin">Admin Login</a> -->
     </div>
 </main>
 
+
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
